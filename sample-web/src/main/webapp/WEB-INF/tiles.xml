@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+        "http://tilles.apache.org/dtds/tiles-config_2_0.dtd">
+
+ <!-- scenario 1 -->
+
+
+<tiles-definitions>
+  <definition name="baseTemplate" id="baseTemplate" template="/WEB-INF/layout/baseLayout.jsp">
+    <put-attribute name="header" value="/WEB-INF/layout/header.jsp" />
+    <put-attribute name="menu" value="/WEB-INF/layout/menu.jsp" />
+    <put-attribute name="body" value="${body}" />
+    <put-attribute name="footer" value="/WEB-INF/layout/footer.jsp" />
+  </definition>
+  
+  <definition name="login" id="login" extends="baseTemplate">
+    <put-attribute name="body" value="/WEB-INF/jsp/login.jsp" />
+  </definition>
+  
+  
+  
+  <definition name="registration" id="registration" extends="baseTemplate">
+    <put-attribute name="body" value="/WEB-INF/jsp/registration.jsp" />
+  </definition>
+  
+   <definition name="successRegistration" id="successRegistration" extends="baseTemplate">
+    <put-attribute name="body" value="/WEB-INF/jsp/successRegistration.jsp" />
+  </definition>
+  
+  <definition name="product" id="product" extends="baseTemplate">
+    <put-attribute name="body" value="/WEB-INF/jsp/product.jsp" />
+  </definition>
+  
+  
+  
+  </tiles-definitions>

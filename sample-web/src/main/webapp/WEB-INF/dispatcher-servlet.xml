@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+     http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+	
+	
+	<context:component-scan base-package="com.pp.controller" />
+	<context:component-scan base-package="com.pp.service" />
+	<context:component-scan base-package="com.pp.repository" />
+	<context:component-scan base-package="com.pp.validator" />
+	<context:component-scan base-package="com.pp.controller.ws" />
+	
+	<mvc:annotation-driven />
+	<context:annotation-config />
+	
+	
+	
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="contentType" value="text/html;charset=UTF-8" />
+		<property name="viewClass">
+			<value>
+				org.springframework.web.servlet.view.tiles2.TilesView
+			</value>
+		</property>
+	</bean>
+	
+	
+	
+	<bean id="tilesConfigurer"
+		class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/tiles.xml</value>
+			</list>
+		</property>
+	
+	
+	</bean>
+	
+	<mvc:interceptors>
+	<mvc:interceptor>
+	<mvc:mapping path="/employee" />
+	<mvc:mapping path="/employee/{id}" />
+	<bean class="com.pp.interceptor.WebServiceAuthInterceptor" />
+	</mvc:interceptor>
+	
+	</mvc:interceptors>
+	
+	
+	<!-- <mvc:interceptors>
+	
+	
+	<mvc:interceptor>
+	<mvc:mapping path="/**" />
+	<mvc:exclude-mapping path="/welcome.do*"/>
+	<mvc:exclude-mapping path="/submitLogin.do*"/>
+	<mvc:exclude-mapping path="/submitRegistration.do*"/>
+	<mvc:exclude-mapping path="/registration.do*"/>
+	<bean class="com.pp.interceptor.LoginInterceptor" />
+	</mvc:interceptor>
+	
+	<mvc:interceptor>
+	<mvc:mapping path="/**" />
+	<bean class="com.pp.interceptor.TimeInterceptor" />
+	
+	</mvc:interceptor>
+	
+	</mvc:interceptors> -->
+	
+	
+	
+	
+	</beans>
